@@ -1,1 +1,0 @@
-/run/media/Programming/CodingShit/Rust/Act5Scratch/grug-rs/grug-rs-proc-macro/target/debug/libgrug_rs_proc_macro.so: /run/media/Programming/CodingShit/Rust/Act5Scratch/grug-rs/grug-rs-proc-macro/src/lib.rs
