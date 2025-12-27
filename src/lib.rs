@@ -2,7 +2,6 @@ pub mod mod_api_type;
 mod to_string_wrapper;
 
 use std::{
-    borrow::Borrow,
     collections::HashMap,
     ffi::{CStr, CString, OsString, c_char, c_void},
     fs::read_to_string,
@@ -70,7 +69,8 @@ unsafe extern "C" fn runtime_error_handler(
 }
 
 pub struct Grug {
-    mod_api: ModAPI,
+    #[allow(dead_code)]
+    mod_api: ModAPI, // Here just in case
     entities: HashMap<String, HashMap<String, usize>>,
 }
 
@@ -127,7 +127,7 @@ impl Grug {
                     name.clone(),
                     data.on_functions
                         .iter()
-                        .map(|(k, v)| {
+                        .map(|(k, _v)| {
                             let return_val = (k.clone(), i);
                             i += 1;
                             return_val
