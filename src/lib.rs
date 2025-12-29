@@ -314,7 +314,7 @@ impl Grug {
         let files = self.get_files_by_entity_type(entity_name);
 
         for file in files {
-            unsafe { file.run_on_function(index) };
+            unsafe { file.run_on_function(index, null_mut())? }; // TODO: Replace null_mut() with actual global variables
         }
 
         Ok(())
@@ -359,12 +359,23 @@ impl GrugFile {
 
     /// # SAFETY
     /// Will segfault if you put an invalid index.
-    pub unsafe fn run_on_function(&self, index: usize) {
-        let ptr = self.inner.on_fns as *mut unsafe extern "C" fn(*mut c_void);
-        let func = unsafe { from_raw_parts(ptr, index + 1) }.last().unwrap();
+    pub unsafe fn run_on_function(
+        &self,
+        index: usize,
+        mut arguments: *mut c_void,
+    ) -> Result<(), GrugError> {
+        let ptr = self.inner.on_fns as *mut unsafe extern "C" fn(*mut *mut c_void);
+        let func = unsafe { from_raw_parts(ptr, index + 1) }.last();
+
+        if func.is_none() {
+            // Ensure the function actually has a definition
+            return Err(GrugError::UndefinedFunction);
+        }
 
         unsafe {
-            func(null_mut()); // TODO: Replace null_mut() with actual global variables
+            func.unwrap()(&mut arguments as *mut _);
         }
+
+        Ok(())
     }
 }
