@@ -217,8 +217,8 @@ impl Grug {
                 (
                     name.clone(),
                     data.on_functions
-                        .iter()
-                        .map(|(k, _v)| {
+                        .keys()
+                        .map(|k| {
                             let return_val = (k.clone(), i);
                             i += 1;
                             return_val
