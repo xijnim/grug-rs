@@ -22,6 +22,7 @@ pub struct OnFunction {
 #[derive(Serialize, Deserialize, Debug)]
 pub struct GameFunction {
     pub description: String,
+    #[serde(default)]
     pub arguments: Vec<Argument>,
 }
 
