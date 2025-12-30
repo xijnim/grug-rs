@@ -2,7 +2,7 @@ Safe bindings for [grug](https://github.com/grug-lang/grug)
 
 # Basic Usage
 ```rs
-use grug_rs::Grug;
+use grug_rs::{Grug, Arguments};
 
 use anyhow::Result;
 use grug_rs_proc_macro::game_function;
@@ -17,7 +17,7 @@ fn main() -> Result<()> {
     )?;
 
     loop {
-        grug.activate_on_function("World", "on_update")?;
+        grug.activate_on_function("World", "on_update", Arguments::empty())?;
     }
 }
 

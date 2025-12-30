@@ -4,7 +4,7 @@
 
 //! # Basic Usage
 //! ```rs
-//! use grug_rs::Grug;
+//! use grug_rs::{Grug, Arguments};
 
 //! use anyhow::Result;
 //! use grug_rs_proc_macro::game_function;
@@ -19,7 +19,7 @@
 //!     )?;
 
 //!     loop {
-//!         grug.activate_on_function("World", "on_update")?;
+//!         grug.activate_on_function("World", "on_update", Arguments::empty())?;
 //!     }
 //! }
 
@@ -104,7 +104,7 @@ use seq_macro::seq;
 use serde_json::from_str;
 use thiserror::Error;
 
-use crate::grug_value::Arguments;
+pub use crate::grug_value::{Arguments, GrugValue};
 use crate::{mod_api_type::ModAPI, to_string_wrapper::ToStringWrapper};
 
 /// Errors from Grug

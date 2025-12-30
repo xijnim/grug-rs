@@ -1,7 +1,4 @@
-use grug_rs::{
-    Grug,
-    grug_value::{Arguments, GrugValue},
-};
+use grug_rs::{Arguments, Grug, GrugValue};
 
 use anyhow::Result;
 use grug_rs_proc_macro::game_function;
