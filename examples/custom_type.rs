@@ -13,7 +13,7 @@ fn main() -> Result<()> {
     )?;
 
     let mut foo = Foo { value: 10 };
-    let mut args = Arguments::new(vec![GrugValue::Custom(&mut foo)]);
+    let mut args = Arguments::new(vec![GrugValue::custom(&mut foo)]);
     grug.activate_on_function("CustomType", "on_update", &mut args)?;
     Ok(())
 }
