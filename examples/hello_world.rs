@@ -16,10 +16,10 @@ fn main() -> Result<()> {
     )?;
 
     let mut args = Arguments::new(vec![GrugValue::String("hello, world".to_string())]);
-    // loop {
-    // grug.activate_on_function("World", "on_update", &mut Arguments::empty())?;
-    grug.activate_on_function("World", "on_argument_test", &mut args)?;
-    // }
+    loop {
+        grug.activate_on_function("World", "on_update", &mut Arguments::empty())?;
+        grug.activate_on_function("World", "on_argument_test", &mut args)?;
+    }
     Ok(())
 }
 
