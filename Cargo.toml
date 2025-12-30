@@ -7,7 +7,7 @@ license = "MIT"
 repository = "https://github.com/lemonlambda/grug-rs"
 
 [dependencies]
-grug-rs-proc-macro = version = "0.1"
+grug-rs-proc-macro = "0.1"
 grug-sys = "0.1"
 linked-hash-map = { version = "0.5.6", features = ["serde", "serde_impl"] }
 seq-macro = "0.3.6"
